@@ -13,7 +13,7 @@ export default class CompNav extends Component {
     return (
         <StyledNav>
             <div>
-                <input placeholder="Buscar" />
+                <input placeholder="Buscarr" />
             </div>
 
             <StyledNav>
