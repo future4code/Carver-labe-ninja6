@@ -1,5 +1,4 @@
 import React from "react";      
-import { Button } from 'antd'
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
   DesktopOutlined,
@@ -7,6 +6,8 @@ import {
   FileOutlined,
   TeamOutlined,
   UserOutlined,
+  ShoppingCartOutlined,
+  CaretDownOutlined,
 } from '@ant-design/icons';
 import '../src/App.css'
 const { Header, Content, Footer, Sider } = Layout;
@@ -57,15 +58,18 @@ class Carrinho extends React.Component {
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }} >
-   
+          
           </Header>
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              Carrinho
+            <div>
+            <CaretDownOutlined/>
+            <ShoppingCartOutlined/>
+            </div>
+
+            <h3>Seu carrinho está vazio!</h3>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
