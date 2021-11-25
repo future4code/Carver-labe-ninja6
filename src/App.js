@@ -20,114 +20,110 @@ class App extends React.Component {
 
     servicos: [],
     carrinho: [],
-  
-    pesquisa: "",
-    precoMax: "",
-    precoMin: "",
-    
-    formNome: "",
-    formDescricao: "",
-    formPreco: "",
+
+    pesquisa: '',
+    precoMax: '',
+    precoMin: '',
+
+    formNome: '',
+    formDescricao: '',
+    formPreco: '',
     formMetodo: [],
-    formData: "",
-  
-    carrinhoTotal: "",
+    formData: '',
 
+    carrinhoTotal: '',
   };
-
-
-
-
 
   componentDidMount() {
     this.getAllJobs();
   }
 
   onChangeBuscar = (event) => {
-    this.setState({pesquisa: event.target.value})
+    this.setState({ pesquisa: event.target.value });
     // console.log(this.state.pesquisa)
-  }
+  };
 
   onChangePrecoMax = (event) => {
-    console.log(event.target.value)
-    // this.setState({precoMax: event.target.value})
-
-  }
+    // console.log(event.target.value);
+    this.setState({ precoMax: event });
+  };
 
   onChangePrecoMin = (event) => {
-    // this.setState({precoMin: event.target.value})
-  }
+    this.setState({ precoMin: event });
+  };
 
-//              API funções || ### = nomeclatura
+  //              API funções || ### = nomeclatura
 
-getAllJobs = () => {
-  const url = `https://labeninjas.herokuapp.com/jobs`
-  axios.get( url, chaveAPI, 
-  ).then((resp) => {
-    this.setState({servicos: resp.data.jobs})
-    // console.log(resp.data.jobs)
-    }).catch((error) => {
-    console.log(" ### ")
-  })
-}
+  getAllJobs = () => {
+    const url = `https://labeninjas.herokuapp.com/jobs`;
+    axios
+      .get(url, chaveAPI)
+      .then((resp) => {
+        this.setState({ servicos: resp.data.jobs });
+        // console.log(resp.data.jobs)
+      })
+      .catch((error) => {
+        console.log(' ### ');
+      });
+  };
 
-getJobById = (id) => {
-  const url = `https://labeninjas.herokuapp.com/jobs/${id}`
-  axios.get( url, chaveAPI,
-  ).then((resp) => {
-    console.log(" ### ")
-  }).catch((error) => {
-    console.log(" ### ")
-  })
-}
+  getJobById = (id) => {
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
+    axios
+      .get(url, chaveAPI)
+      .then((resp) => {
+        console.log(' ### ');
+      })
+      .catch((error) => {
+        console.log(' ### ');
+      });
+  };
 
-createJob = () => {
-  const url = `https://labeninjas.herokuapp.com/jobs`
-  let body = 
-  {
-    "title":" ## this.state.formNome ## ",
-    "description":" ## this.state.formDescricao ## ",
-    "price":"## this.state.formPreco ##",
-    "paymentMethods":"## this.state.formMetodo ##", // body diferente, olhar API
-    "dueDate":"## this.state.formData ## " // body diferente, olhar API
-  }
-  axios.post( url, body, chaveAPI,
-    ).then((resp) => {
-    console.log(" ### ")
-  }).catch((error) => {
-    console.log(" ### ")
-  })
-}
+  createJob = () => {
+    const url = `https://labeninjas.herokuapp.com/jobs`;
+    let body = {
+      title: ' ## this.state.formNome ## ',
+      description: ' ## this.state.formDescricao ## ',
+      price: '## this.state.formPreco ##',
+      paymentMethods: '## this.state.formMetodo ##', // body diferente, olhar API
+      dueDate: '## this.state.formData ## ', // body diferente, olhar API
+    };
+    axios
+      .post(url, body, chaveAPI)
+      .then((resp) => {
+        console.log(' ### ');
+      })
+      .catch((error) => {
+        console.log(' ### ');
+      });
+  };
 
   deleteJob = (id) => {
-    const url = `https://labeninjas.herokuapp.com/jobs/${id}`
-    axios.delete( url, chaveAPI,
-      ).then((resp) => {
-      console.log(" ### ")
-    }).catch((error) => {
-      console.log(" ### ")
-    })
-  }
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
+    axios
+      .delete(url, chaveAPI)
+      .then((resp) => {
+        console.log(' ### ');
+      })
+      .catch((error) => {
+        console.log(' ### ');
+      });
+  };
 
   updateJob = (id) => {
-    const url = `https://labeninjas.herokuapp.com/jobs/${id}`
-    let body = 
-    {
-      "taken":true
-    }
-    axios.post( url, body, chaveAPI,
-      ).then((resp) => {
-      console.log(" ### ")
-    }).catch((error) => {
-      console.log(" ### ")
-    })
-  }
-
-
-
-
-
-
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
+    let body = {
+      taken: true,
+    };
+    axios
+      .post(url, body, chaveAPI)
+      .then((resp) => {
+        console.log(' ### ');
+      })
+      .catch((error) => {
+        console.log(' ### ');
+      });
+  };
 
   // getAllJobs = () => {
   //   const url = 'https://labeninjas.herokuapp.com/jobs';

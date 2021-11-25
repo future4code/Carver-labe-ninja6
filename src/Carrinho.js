@@ -1,4 +1,4 @@
-import React from "react";      
+import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
   DesktopOutlined,
@@ -9,7 +9,7 @@ import {
   ShoppingCartOutlined,
   CaretDownOutlined,
 } from '@ant-design/icons';
-import '../src/App.css'
+import '../src/App.css';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -18,7 +18,7 @@ class Carrinho extends React.Component {
     collapsed: false,
   };
 
-  onCollapse = collapsed => {
+  onCollapse = (collapsed) => {
     console.log(collapsed);
     this.setState({ collapsed });
   };
@@ -28,19 +28,35 @@ class Carrinho extends React.Component {
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
-          <img src={"./img/all."} className="logo" />
+          <img src={'./img/all.'} className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item  onClick={this.props.irParaCadastro}  key="1" icon={<PieChartOutlined />}>
-             Cadastro
+            <Menu.Item
+              onClick={this.props.irParaCadastro}
+              key="1"
+              icon={<PieChartOutlined />}
+            >
+              Cadastro
             </Menu.Item>
-            <Menu.Item onClick={this.props.irParaHome} key="2" icon={<DesktopOutlined />}>
-             Home
+            <Menu.Item
+              onClick={this.props.irParaHome}
+              key="2"
+              icon={<DesktopOutlined />}
+            >
+              Home
             </Menu.Item>
-          <Menu.Item  onClick={this.props.irParaCards}  key="3" icon={<PieChartOutlined />}>
-             Cards
+            <Menu.Item
+              onClick={this.props.irParaCards}
+              key="3"
+              icon={<PieChartOutlined />}
+            >
+              Cards
             </Menu.Item>
-            <Menu.Item onClick={this.props.irParaDetalhes} key="4" icon={<DesktopOutlined />}>
-             Detalhes
+            <Menu.Item
+              onClick={this.props.irParaDetalhes}
+              key="4"
+              icon={<DesktopOutlined />}
+            >
+              Detalhes
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User">
               <Menu.Item key="3">Tom</Menu.Item>
@@ -57,24 +73,28 @@ class Carrinho extends React.Component {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} >
-          
-          </Header>
+          <Header
+            className="site-layout-background"
+            style={{ padding: 0 }}
+          ></Header>
           <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-            </Breadcrumb>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            <div>
-            <CaretDownOutlined/>
-            <ShoppingCartOutlined/>
-            </div>
+            <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              <div>
+                <CaretDownOutlined />
+                <ShoppingCartOutlined />
+              </div>
 
-            <h3>Seu carrinho está vazio!</h3>
+              <h3>Seu carrinho está vazio!</h3>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Carver</Footer>
         </Layout>
       </Layout>
-    )
+    );
   }
-} export default Carrinho
+}
+export default Carrinho;
