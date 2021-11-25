@@ -156,7 +156,7 @@ class Cadastro extends React.Component {
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2018 Created by Ant UED
+          Carver
           </Footer>
         </Layout>
       </Layout>
@@ -164,3 +164,10 @@ class Cadastro extends React.Component {
   }
 }
 export default Cadastro;
+
+
+//              App funções || ### = nomeclatura
+
+// onChange### = (event) => {
+//   setState({###: event.target.value})
+// }

@@ -11,6 +11,7 @@ import {
   SearchOutlined,
 } from '@ant-design/icons';
 import '../src/App.css'
+import Item from "antd/lib/list/Item";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 const { Meta } = Card;
@@ -49,6 +50,43 @@ class Cards extends React.Component {
   };
 
   render() {
+    const cardsRenderizados = this.props.servicos.filter(item => {
+      return item.title.toLowerCase().includes(this.props.pesquisa.toLowerCase())
+    }).filter(item => {
+      return this.props.precoMin === "" || item.value >= this.props.precoMin
+    }).filter(item => {
+      return this.props.precoMax === "" || item.value <= this.props.precoMax
+    }).map(item => {
+      return (<div>
+        <p>{item.title}</p>
+        <p>{item.price}</p>
+        <button>Ver detalhe</button>
+        </div>)
+    })
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // .sort((currentItem, nextItem) => { 
+    //   if (this.state.sortingParameter === 'name') {
+    //     return this.state.order * currentItem.name.localeCompare(nextItem.name)
+    //   } else {
+    //     return this.state.order * (currentItem.value - nextItem.value)
+    //   }
+    // })
+
+
+
+
     const { collapsed } = this.state;
     return (
       <Layout style={{ minHeight: '100vh' }}>
@@ -83,7 +121,7 @@ class Cards extends React.Component {
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0, textAlign: 'center' }}  >
-          <Input size="large" placeholder="Buscar" prefix={<SearchOutlined />} style={{ margin: '0 16px', width: '500px' }} />
+          <Input size="large" placeholder="Buscar" onChange={this.props.onChangeBuscar} prefix={<SearchOutlined />} style={{ margin: '0 16px', width: '500px' }} />
           </Header>
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
@@ -116,17 +154,36 @@ class Cards extends React.Component {
                     <InputNumber
                       placeholder="Mínimo"
                       min={0} max={9000}
-                      onChange={onChange} />
-                    <InputNumber
+                      value={this.props.precoMin}
+                      onChange={this.props.onChangePrecoMin} />
+                    <InputNumber   
                       placeholder="Máximo"
                       min={0} max={9000}
-                      onChange={onChange} />
+                      value={this.props.precoMax}
+                      onChange={this.props.onChangePrecoMax} />
                   </div>
                 </Header>
                 {/* </Space> */}
                 {/* </Row> */}
               <Row gutter={[16, 24]} style={{ padding: 24,  }}>
+
+
+                     {/* <Col className="gutter-row" span={6}>
+                   <Card hoverable style={{ width: 240 }}>
+
+
+                    { <Meta title={item.title}
+                       description="Ver Detalhes" /> }
+                   <b>R$: 7.795,25</b>
+                   </Card>
+                 </Col> */}
+
                 <Col className="gutter-row" span={6}>
+                
+                  <div>  {cardsRenderizados} </div>
+
+                </Col>
+                {/* <Col className="gutter-row" span={6}>
                   <Card
                     hoverable
                     style={{ width: 240 }}
@@ -136,88 +193,11 @@ class Cards extends React.Component {
                       description="Ver Detalhes" />
                     <b>R$: 7.795,25</b>
                   </Card>
-                </Col>
-                <Col className="gutter-row" span={6}>
-                  <Card
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://exame.com/wp-content/uploads/2021/05/GettyImages-938677744.jpg" />}
-                  >
-                    <Meta title="Hacker"
-                      description="Ver Detalhes" />
-                    <b>R$: 7.795,25</b>
-                  </Card>
-                </Col>
-                <Col className="gutter-row" span={6}>
-                  <Card
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://exame.com/wp-content/uploads/2021/05/GettyImages-938677744.jpg" />}
-                  >
-                    <Meta title="Hacker"
-                      description="Ver Detalhes" />
-                    <b>R$: 7.795,25</b>
-                  </Card>
-                </Col>
-                <Col className="gutter-row" span={6}>
-                  <Card
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://exame.com/wp-content/uploads/2021/05/GettyImages-938677744.jpg" />}
-                  >
-                    <Meta title="Hacker"
-                      description="Ver Detalhes" />
-                    <b>R$: 7.795,25</b>
-                  </Card>
-                </Col>
-                <Col className="gutter-row" span={6}>
-                  <Card
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://exame.com/wp-content/uploads/2021/05/GettyImages-938677744.jpg" />}
-                  >
-                    <Meta title="Hacker"
-                      description="Ver Detalhes" />
-                    <b>R$: 7.795,25</b>
-                  </Card>
-                </Col>
-                <Col className="gutter-row" span={6}>
-                  <Card
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://exame.com/wp-content/uploads/2021/05/GettyImages-938677744.jpg" />}
-                  >
-                    <Meta title="Hacker"
-                      description="Ver Detalhes" />
-                    <b>R$: 7.795,25</b>
-                  </Card>
-                </Col>
-                <Col className="gutter-row" span={6}>
-                  <Card
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://exame.com/wp-content/uploads/2021/05/GettyImages-938677744.jpg" />}
-                  >
-                    <Meta title="Hacker"
-                      description="Ver Detalhes" />
-                    <b>R$: 7.795,25</b>
-                  </Card>
-                </Col>
-                <Col className="gutter-row" span={6}>
-                  <Card
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://exame.com/wp-content/uploads/2021/05/GettyImages-938677744.jpg" />}
-                  >
-                    <Meta title="Hacker"
-                      description="Ver Detalhes" />
-                    <b>R$: 7.795,25</b>
-                  </Card>
-                </Col>
+                </Col> */}
               </Row>
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}>Carver</Footer>
         </Layout>
       </Layout>
     )

@@ -17,25 +17,132 @@ const chaveAPI = {
 class App extends React.Component {
   state = {
     telaAtual: 'Home',
+
+    servicos: [],
+    carrinho: [],
+  
+    pesquisa: "",
+    precoMax: "",
+    precoMin: "",
+    
+    formNome: "",
+    formDescricao: "",
+    formPreco: "",
+    formMetodo: [],
+    formData: "",
+  
+    carrinhoTotal: "",
+
   };
+
+
+
+
+
   componentDidMount() {
     this.getAllJobs();
   }
 
-  getAllJobs = () => {
-    const url = 'https://labeninjas.herokuapp.com/jobs';
-    axios
-      .get({
-        url,
-        chaveAPI,
-      })
-      .then((res) => {
-        console.log('funcionando');
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  };
+  onChangeBuscar = (event) => {
+    this.setState({pesquisa: event.target.value})
+    // console.log(this.state.pesquisa)
+  }
+
+  onChangePrecoMax = (event) => {
+    console.log(event.target.value)
+    // this.setState({precoMax: event.target.value})
+
+  }
+
+  onChangePrecoMin = (event) => {
+    // this.setState({precoMin: event.target.value})
+  }
+
+//              API funções || ### = nomeclatura
+
+getAllJobs = () => {
+  const url = `https://labeninjas.herokuapp.com/jobs`
+  axios.get( url, chaveAPI, 
+  ).then((resp) => {
+    this.setState({servicos: resp.data.jobs})
+    // console.log(resp.data.jobs)
+    }).catch((error) => {
+    console.log(" ### ")
+  })
+}
+
+getJobById = (id) => {
+  const url = `https://labeninjas.herokuapp.com/jobs/${id}`
+  axios.get( url, chaveAPI,
+  ).then((resp) => {
+    console.log(" ### ")
+  }).catch((error) => {
+    console.log(" ### ")
+  })
+}
+
+createJob = () => {
+  const url = `https://labeninjas.herokuapp.com/jobs`
+  let body = 
+  {
+    "title":" ## this.state.formNome ## ",
+    "description":" ## this.state.formDescricao ## ",
+    "price":"## this.state.formPreco ##",
+    "paymentMethods":"## this.state.formMetodo ##", // body diferente, olhar API
+    "dueDate":"## this.state.formData ## " // body diferente, olhar API
+  }
+  axios.post( url, body, chaveAPI,
+    ).then((resp) => {
+    console.log(" ### ")
+  }).catch((error) => {
+    console.log(" ### ")
+  })
+}
+
+  deleteJob = (id) => {
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`
+    axios.delete( url, chaveAPI,
+      ).then((resp) => {
+      console.log(" ### ")
+    }).catch((error) => {
+      console.log(" ### ")
+    })
+  }
+
+  updateJob = (id) => {
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`
+    let body = 
+    {
+      "taken":true
+    }
+    axios.post( url, body, chaveAPI,
+      ).then((resp) => {
+      console.log(" ### ")
+    }).catch((error) => {
+      console.log(" ### ")
+    })
+  }
+
+
+
+
+
+
+
+  // getAllJobs = () => {
+  //   const url = 'https://labeninjas.herokuapp.com/jobs';
+  //   axios
+  //     .get({
+  //       url,
+  //       chaveAPI,
+  //     })
+  //     .then((res) => {
+  //       console.log('funcionando');
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data);
+  //     });
+  // };
 
   escolherTela = () => {
     switch (this.state.telaAtual) {
@@ -86,6 +193,13 @@ class App extends React.Component {
             irParaHome={this.irParaHome}
             irParaCarrinho={this.irParaCarrinho}
             irParaDetalhes={this.irParaDetalhes}
+            servicos={this.state.servicos}
+            precoMin={this.state.precoMin}
+            precoMax={this.state.precoMax}
+            pesquisa={this.state.pesquisa}
+            onChangeBuscar={this.onChangeBuscar}
+            onChangePrecoMax={this.onChangePrecoMax}
+            onChangePrecoMin={this.onChangePrecoMin}
           />
         );
 
