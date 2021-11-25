@@ -68,7 +68,10 @@ class Home extends React.Component {
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              Home
+            
+            <img src='./LogoAllFredo.png' alt='logo' width="100%"/>
+            <Button type="primary">💰 Seja um All<i>Fredo</i></Button>
+            <Button type="primary">👁️‍🗨️ Contratar um All<i>Fredo</i></Button>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
@@ -77,3 +80,97 @@ class Home extends React.Component {
     )
   }
 } export default Home
+
+// state = {
+//   servicos: [],
+//   carrinho: [],
+
+//   pesquisa: "",
+//   precoMax: "",
+//   precoMin: "",
+  
+//   formNome: "",
+//   formDescricao: "",
+//   formPreco: "",
+//   formMetodo: [],
+//   formData: "",
+
+//   carrinhoTotal: "",
+// }
+
+
+//              App funções || ### = nomeclatura
+
+// onChange### = (event) => {
+//   setState({###: event.target.value})
+// }
+
+
+//              API funções || ### = nomeclatura
+
+// getAllJobs = () => {
+//   const url = `https://labeninjas.herokuapp.com/jobs`
+//   axios.get( url, {
+//     headers: { Authorization: " ### " }
+//   }).then((resp) => {
+//     console.log(" ### ")
+//   }).catch((error) => {
+//     console.log(" ### ")
+//   })
+// }
+
+// getJobById = (id) => {
+//   const url = `https://labeninjas.herokuapp.com/jobs/${id}`
+//   axios.get( url, {
+//     headers: { Authorization: " ### "}
+//   }).then((resp) => {
+//     console.log(" ### ")
+//   }).catch((error) => {
+//     console.log(" ### ")
+//   })
+// }
+
+// createJob = () => {
+//   const url = `https://labeninjas.herokuapp.com/jobs`
+//   let body = 
+//   {
+//     "title":" ## this.state.formNome ## ",
+//     "description":" ## this.state.formDescricao ## ",
+//     "price":"## this.state.formPreco ##",
+//     "paymentMethods":"## this.state.formMetodo ##", // body diferente, olhar API
+//     "dueDate":"## this.state.formData ## " // body diferente, olhar API
+//   }
+//   axios.post( url, body, {
+//     headers: { Authorization: "###" }
+//   }).then((resp) => {
+//     console.log(" ### ")
+//   }).catch((error) => {
+//     console.log(" ### ")
+//   })
+// }
+
+//   deleteJob = (id) => {
+//     const url = `https://labeninjas.herokuapp.com/jobs/${id}`
+//     axios.delete( url, {
+//       headers: { Authorization: "###" }
+//     }).then((resp) => {
+//       console.log(" ### ")
+//     }).catch((error) => {
+//       console.log(" ### ")
+//     })
+//   }
+
+//   updateJob = (id) => {
+//     const url = `https://labeninjas.herokuapp.com/jobs/${id}`
+//     let body = 
+//     {
+//       "taken":true
+//     }
+//     axios.post( url, body, {
+//       headers: { Authorization: "###" }
+//     }).then((resp) => {
+//       console.log(" ### ")
+//     }).catch((error) => {
+//       console.log(" ### ")
+//     })
+//   }
