@@ -62,12 +62,14 @@ class Cards extends React.Component {
       })
       .map((item) => {
         return (
-          <div key={item.id}>
-            <p>{item.title}</p>
+          <Col className="gutter-row" span={6}>
+          <Card hoverable style={{ width: 240, textAlign: 'center' }} key={item.id}>
+            <Meta title={item.title} />
             <p>{item.price}</p>
             <button onClick={this.props.irParaDetalhes}>Ver detalhe</button>
             <button onClick={() => {this.props.onClickAdicionarAoCarrinho(item.id)}}>Adicionar ao Carrinho</button>
-          </div>
+          </Card>
+          </Col>
         );
       });
 
@@ -190,33 +192,8 @@ class Cards extends React.Component {
                   />
                 </div>
               </Header>
-              {/* </Space> */}
-              {/* </Row> */}
               <Row gutter={[16, 24]} style={{ padding: 24 }}>
-                {/* <Col className="gutter-row" span={6}>
-                   <Card hoverable style={{ width: 240 }}>
-
-
-                    { <Meta title={item.title}
-                       description="Ver Detalhes" /> }
-                   <b>R$: 7.795,25</b>
-                   </Card>
-                 </Col> */}
-
-                <Col className="gutter-row" span={6}>
-                  <div> {cardsRenderizados} </div>
-                </Col>
-                {/* <Col className="gutter-row" span={6}>
-                  <Card
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="example" src="https://exame.com/wp-content/uploads/2021/05/GettyImages-938677744.jpg" />}
-                  >
-                    <Meta title="Hacker"
-                      description="Ver Detalhes" />
-                    <b>R$: 7.795,25</b>
-                  </Card>
-                </Col> */}
+                   {cardsRenderizados}
               </Row>
             </div>
           </Content>
