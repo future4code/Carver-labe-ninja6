@@ -20,6 +20,7 @@ class App extends React.Component {
 
     servicos: [],
     carrinho: [],
+    detalhes: [],
 
     pesquisa: '',
     precoMax: '',
@@ -52,6 +53,35 @@ class App extends React.Component {
     this.setState({ precoMin: event });
   };
 
+  onClickAdicionarAoCarrinho = (id) => {
+    const novoCarrinho = [...this.state.carrinho, id];
+    this.setState({ carrinho: novoCarrinho });
+
+    console.log(this.state.carrinho);
+  }
+
+  //              FORM funções || 
+
+  onChangeFormNome = (event) => {
+    this.setState({ formNome: event.target.value })
+  }
+
+  onChangeFormDescricao = (event) => {
+    this.setState({ formDescricao: event.target.value })
+  }
+
+  onChangeFormPreco = (event) => {
+    this.setState({ formPreco: event.target.value })
+  }
+
+  onChangeFormMetodo = (event) => {
+    this.setState({ formMetodo: event.target.value })
+  }
+
+  onChangeFormData = (event) => {
+    this.setState({ formData: event.target.value })
+  }
+
   //              API funções || ### = nomeclatura
 
   getAllJobs = () => {
@@ -72,7 +102,7 @@ class App extends React.Component {
     axios
       .get(url, chaveAPI)
       .then((resp) => {
-        console.log(' ### ');
+        console.log(id);
       })
       .catch((error) => {
         console.log(' ### ');
@@ -82,16 +112,16 @@ class App extends React.Component {
   createJob = () => {
     const url = `https://labeninjas.herokuapp.com/jobs`;
     let body = {
-      title: ' ## this.state.formNome ## ',
-      description: ' ## this.state.formDescricao ## ',
-      price: '## this.state.formPreco ##',
-      paymentMethods: '## this.state.formMetodo ##', // body diferente, olhar API
-      dueDate: '## this.state.formData ## ', // body diferente, olhar API
-    };
+      title: this.state.formNome,
+      description: this.state.formDescricao,
+      price: this.state.formPreco,
+      paymentMethods: this.state.formMetodo, // body diferente, olhar API
+      dueDate: this.state.formData, // body diferente, olhar API
+              };
     axios
       .post(url, body, chaveAPI)
       .then((resp) => {
-        console.log(' ### ');
+        console.log(resp);
       })
       .catch((error) => {
         console.log(' ### ');
@@ -103,10 +133,11 @@ class App extends React.Component {
     axios
       .delete(url, chaveAPI)
       .then((resp) => {
-        console.log(' ### ');
+        this.getJobById(id)
+        this.getAllJobs(id)
       })
       .catch((error) => {
-        console.log(' ### ');
+        console.log(error);
       });
   };
 
@@ -159,6 +190,12 @@ class App extends React.Component {
             irParaCards={this.irParaCards}
             irParaCarrinho={this.irParaCarrinho}
             irParaDetalhes={this.irParaDetalhes}
+            createJob={this.createJob}
+            onChangeFormNome={this.onChangeFormNome}
+            onChangeFormDescricao={this.onChangeFormDescricao}
+            onChangeFormPreco={this.onChangeFormPreco}
+            onChangeFormMetodo={this.onChangeFormMetodo}
+            onChangeFormData={this.onChangeFormData}
           />
         );
 
@@ -169,6 +206,10 @@ class App extends React.Component {
             irParaCards={this.irParaCards}
             irParaHome={this.irParaHome}
             irParaDetalhes={this.irParaDetalhes}
+            carrinho={this.state.carrinho}
+            getAllJobs={this.getAllJobs}
+            getJobById={this.getJobById}
+            deleteJob={this.deleteJob}
           />
         );
 
@@ -196,6 +237,7 @@ class App extends React.Component {
             onChangeBuscar={this.onChangeBuscar}
             onChangePrecoMax={this.onChangePrecoMax}
             onChangePrecoMin={this.onChangePrecoMin}
+            onClickAdicionarAoCarrinho={this.onClickAdicionarAoCarrinho}
           />
         );
 

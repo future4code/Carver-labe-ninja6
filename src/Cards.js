@@ -62,10 +62,11 @@ class Cards extends React.Component {
       })
       .map((item) => {
         return (
-          <div>
+          <div key={item.id}>
             <p>{item.title}</p>
             <p>{item.price}</p>
-            <button>Ver detalhe</button>
+            <button onClick={this.props.irParaDetalhes}>Ver detalhe</button>
+            <button onClick={() => {this.props.onClickAdicionarAoCarrinho(item.id)}}>Adicionar ao Carrinho</button>
           </div>
         );
       });
@@ -183,6 +184,7 @@ class Cards extends React.Component {
                     placeholder="Máximo"
                     min={0}
                     max={9000}
+                    // defaultValue={9000}
                     value={this.props.precoMax}
                     onChange={this.props.onChangePrecoMax}
                   />

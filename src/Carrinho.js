@@ -18,12 +18,27 @@ class Carrinho extends React.Component {
     collapsed: false,
   };
 
+ componentDidUpdate() {
+    this.props.getAllJobs()
+  }
+
   onCollapse = (collapsed) => {
     console.log(collapsed);
     this.setState({ collapsed });
   };
 
   render() {
+    const carrinhoRenderizado = this.props.carrinho.map((item) => {
+      return (
+        <div key={item.id}>
+          <p>{item.name}</p>
+          <p>{item.price}</p>
+          <button onClick={() => this.props.deleteJob(item.id)}>remover item</button>
+        </div>
+      )
+    })
+
+
     const { collapsed } = this.state;
     return (
       <Layout style={{ minHeight: '100vh' }}>
@@ -88,7 +103,15 @@ class Carrinho extends React.Component {
                 <ShoppingCartOutlined />
               </div>
 
-              <h3>Seu carrinho está vazio!</h3>
+                  {this.props.carrinho.length > 0 
+                  ? 
+                  <div>
+                    {carrinhoRenderizado}
+                  </div>
+                  : 
+                  <h3>Seu carrinho está vazio!</h3>}
+
+              {/* <h3>Seu carrinho está vazio!</h3> */}
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Carver</Footer>
