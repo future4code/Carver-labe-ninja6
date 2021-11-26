@@ -155,16 +155,13 @@ class Cadastro extends React.Component {
               <FormSizeDemo />
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
-          Carver
-          </Footer>
+          <Footer style={{ textAlign: 'center' }}>Carver</Footer>
         </Layout>
       </Layout>
     );
   }
 }
 export default Cadastro;
-
 
 //              App funções || ### = nomeclatura
 
