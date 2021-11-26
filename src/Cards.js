@@ -63,12 +63,12 @@ class Cards extends React.Component {
       .map((item) => {
         return (
           <Col className="gutter-row" span={6}>
-          <Card hoverable style={{ width: 240, textAlign: 'center' }} key={item.id}>
-            <Meta title={item.title} />
-            <p>{item.price}</p>
-            <button onClick={this.props.irParaDetalhes}>Ver detalhe</button>
-            <button onClick={() => {this.props.onClickAdicionarAoCarrinho(item.id)}}>Adicionar ao Carrinho</button>
-          </Card>
+            <Card hoverable style={{ width: 240, textAlign: 'center' }} key={item.id}>
+              <Meta title={item.title} />
+              <p>{item.price}</p>
+              <button onClick={() => { this.props.onClickDetail(item)} }>Ver detalhe</button>
+              <button onClick={() => { this.props.onClickAdicionarAoCarrinho(item.id) }}>Adicionar ao Carrinho</button>
+            </Card>
           </Col>
         );
       });
@@ -193,7 +193,7 @@ class Cards extends React.Component {
                 </div>
               </Header>
               <Row gutter={[16, 24]} style={{ padding: 24 }}>
-                   {cardsRenderizados}
+                {cardsRenderizados}
               </Row>
             </div>
           </Content>

@@ -8,6 +8,7 @@ import {
   UserOutlined,
   ShoppingCartOutlined,
   CaretDownOutlined,
+  CopyFilled,
 } from '@ant-design/icons';
 import '../src/App.css';
 const { Header, Content, Footer, Sider } = Layout;
@@ -37,7 +38,7 @@ class Carrinho extends React.Component {
         </div>
       )
     })
-
+    
 
     const { collapsed } = this.state;
     return (
@@ -102,7 +103,6 @@ class Carrinho extends React.Component {
                 <CaretDownOutlined />
                 <ShoppingCartOutlined />
               </div>
-
                   {this.props.carrinho.length > 0 
                   ? 
                   <div>

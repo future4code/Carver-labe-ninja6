@@ -33,7 +33,15 @@ class App extends React.Component {
     formData: '',
 
     carrinhoTotal: '',
+
+    titulo:"",
+    preco:"",
+    descricao:"",
+    metodos:"",
+    data:"",
   };
+
+
 
   componentDidMount() {
     this.getAllJobs();
@@ -82,6 +90,19 @@ class App extends React.Component {
     this.setState({ formData: event.target.value })
   }
 
+  onClickDetail = (item) => {
+    // this.setState({detalhes: item})
+    // this.setState(
+    //   {titulo: item.title},
+    //   {preco: item.price},
+    //   {descricao: item.description},
+    //   {metodos: item.paymentMethods},
+    //   {data: item.dueDate},)
+
+      this.irParaDetalhes()
+
+    console.log(item.description)
+  };
   //              API funções || ### = nomeclatura
 
   getAllJobs = () => {
@@ -129,15 +150,17 @@ class App extends React.Component {
   };
 
   deleteJob = (id) => {
-    const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
+    const url = `https://labeninjas.herokuapp.com/jobs/${this.props.id}`;
     axios
       .delete(url, chaveAPI)
       .then((resp) => {
         this.getJobById(id)
         this.getAllJobs(id)
+        console.log(this.deleteJob)
       })
       .catch((error) => {
         console.log(error);
+        console.log(this.deleteJob)
       });
   };
 
@@ -156,20 +179,7 @@ class App extends React.Component {
       });
   };
 
-  // getAllJobs = () => {
-  //   const url = 'https://labeninjas.herokuapp.com/jobs';
-  //   axios
-  //     .get({
-  //       url,
-  //       chaveAPI,
-  //     })
-  //     .then((res) => {
-  //       console.log('funcionando');
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.response.data);
-  //     });
-  // };
+
 
   escolherTela = () => {
     switch (this.state.telaAtual) {
@@ -220,6 +230,11 @@ class App extends React.Component {
             irParaCards={this.irParaCards}
             irParaCarrinho={this.irParaCarrinho}
             irParaHome={this.irParaHome}
+            titulo={this.state.titulo}
+            preco={this.state.preco}
+            descricao={this.state.descricao}
+            metodos={this.state.metodos}
+            data={this.state.data}
           />
         );
 
@@ -238,6 +253,7 @@ class App extends React.Component {
             onChangePrecoMax={this.onChangePrecoMax}
             onChangePrecoMin={this.onChangePrecoMin}
             onClickAdicionarAoCarrinho={this.onClickAdicionarAoCarrinho}
+            onClickDetail={this.onClickDetail}
           />
         );
 
