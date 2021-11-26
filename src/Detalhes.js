@@ -9,6 +9,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import '../src/App.css';
+import Item from 'antd/lib/list/Item';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -23,6 +24,18 @@ class Detalhes extends React.Component {
   };
 
   render() {
+    const detalhesRenderizado = this.props.filter((card) => {
+      return card.id
+    })
+    .map((card) => {
+      return(<div>
+        <h2>{card.title}</h2>
+        <p>{card.price}</p>
+        <p>{card.dueDate}</p>
+        <p>{card.description}</p>
+      </div>)
+    })
+
     const { collapsed } = this.state;
     return (
       <Layout style={{ minHeight: '100vh' }}>
@@ -85,7 +98,7 @@ class Detalhes extends React.Component {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              Detalhes
+              detalhesRenderizado
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Carver</Footer>

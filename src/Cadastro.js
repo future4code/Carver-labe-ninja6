@@ -22,63 +22,64 @@ import '../src/App.css';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-const FormSizeDemo = () => {
-  const [componentSize, setComponentSize] = useState('default');
+// const FormSizeDemo = () => {
+//   const [componentSize, setComponentSize] = useState('default');
 
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
-  };
+//   const onFormLayoutChange = ({ size }) => {
+//     setComponentSize(size);
+//   };
 
-  return (
-    <>
-      <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        initialValues={{
-          size: componentSize,
-        }}
-        onValuesChange={onFormLayoutChange}
-        size={componentSize}
-      >
-        <Form.Item label="Form Size" name="size">
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Título">
-          <Input placeholder="Título" />
-        </Form.Item>
-        <Form.Item label="Descrição">
-          <Input placeholder="Descrição" />
-        </Form.Item>
-        <Form.Item label="Valor">
-          <InputNumber placeholder="Valor" />
-        </Form.Item>
-        <Form.Item label="Formas de Pagamento">
-          <Select mode="multiple">
-            <Select.Option value="Cartão">Cartão</Select.Option>
-            <Select.Option value="dinheiro">Dinheiro</Select.Option>
-            <Select.Option value="PayPal">PayPal</Select.Option>
-            <Select.Option value="Pix">Pix</Select.Option>
-          </Select>
-        </Form.Item>
-        <Form.Item label="Prazo">
-          <DatePicker />
-        </Form.Item>
-        <Form.Item label="">
-          <Button>Enviar</Button>
-        </Form.Item>
-      </Form>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <Form
+//         labelCol={{
+//           span: 4,
+//         }}
+//         wrapperCol={{
+//           span: 14,
+//         }}
+//         layout="horizontal"
+//         initialValues={{
+//           size: componentSize,
+//         }}
+//         onValuesChange={onFormLayoutChange}
+//         size={componentSize}
+//       >
+//         <Form.Item label="Form Size" name="size">
+//           <Radio.Group>
+//             <Radio.Button value="small">Small</Radio.Button>
+//             <Radio.Button value="default">Default</Radio.Button>
+//             <Radio.Button value="large">Large</Radio.Button>
+//           </Radio.Group>
+//         </Form.Item>
+//         <Form.Item label="Título">
+//           <Input placeholder="Título" />
+//         </Form.Item>
+//         <Form.Item label="Descrição">
+//           <Input placeholder="Descrição" />
+//         </Form.Item>
+//         <Form.Item label="Valor">
+//           <InputNumber placeholder="Valor" />
+//         </Form.Item>
+//         <Form.Item label="Formas de Pagamento">
+//           <Select mode="multiple">
+//             <Select.Option value="Cartão">Cartão</Select.Option>
+//             <Select.Option value="dinheiro">Dinheiro</Select.Option>
+//             <Select.Option value="PayPal">PayPal</Select.Option>
+//             <Select.Option value="Pix">Pix</Select.Option>
+//           </Select>
+//         </Form.Item>
+//         <Form.Item label="Prazo">
+//           <DatePicker />
+//         </Form.Item>
+//         <Form.Item label="">
+//           <Button>Enviar</Button>
+//           {/* <Button onClick={() => {this.props.createJob()}}>Enviar</Button> */}
+//         </Form.Item>
+//       </Form>
+//     </>
+//   );
+// };
 class Cadastro extends React.Component {
   state = {
     collapsed: false,
@@ -152,7 +153,29 @@ class Cadastro extends React.Component {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              <FormSizeDemo />
+              <Form.Item label="Título">
+                <Input placeholder="Título" />
+              </Form.Item>
+              <Form.Item label="Descrição">
+                <Input placeholder="Descrição" />
+              </Form.Item>
+              <Form.Item label="Valor">
+                <InputNumber placeholder="Valor" />
+              </Form.Item>
+              <Form.Item label="Formas de Pagamento">
+                <Select mode="multiple">
+                  <Select.Option value="Cartão">Cartão</Select.Option>
+                  <Select.Option value="dinheiro">Dinheiro</Select.Option>
+                  <Select.Option value="PayPal">PayPal</Select.Option>
+                  <Select.Option value="Pix">Pix</Select.Option>
+                </Select>
+              </Form.Item>
+              <Form.Item label="Prazo">
+                <DatePicker />
+              </Form.Item>
+              <Form.Item label="">
+                <Button>Enviar</Button>
+              </Form.Item>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Carver</Footer>
