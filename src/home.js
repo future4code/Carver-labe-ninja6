@@ -18,7 +18,7 @@ class Home extends React.Component {
   };
 
   onCollapse = (collapsed) => {
-    console.log(collapsed);
+    // console.log(collapsed);
     this.setState({ collapsed });
   };
 
@@ -96,7 +96,7 @@ class Home extends React.Component {
                 {' '}
                 💰 Seja um All<i>Fredo</i>{' '}
               </Button>
-              {console.log(this.props.irParaCadastro)}
+              {/* {console.log(this.props.irParaCadastro)} */}
               <Button type="primary" onClick={this.props.irParaCards}>
                 {' '}
                 👁️‍🗨️ Contratar um All<i>Fredo</i>{' '}
